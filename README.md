@@ -17,6 +17,8 @@ Features:
 
 ## Using the File Format in Your Engine ##
 
+In an application using the file format, you only need the two headers inside the `runtime` subdirectory.
+
 ``` cpp
 // Load entire file into one contiguous buffer, or even mmap() your file:
 const void* data = MyEngine::LoadFile("mesh.mmf");
@@ -25,8 +27,8 @@ const void* data = MyEngine::LoadFile("mesh.mmf");
 const MeshFile* file = static_cast<const MeshFile*>(data);
 
 // Check magic number and version:
-assert(mesh->magic == MeshFile::kMagic);
-assert(mesh->version == MeshFile::kVersion);
+assert(file->magic == MeshFile::kMagic);
+assert(file->version == MeshFile::kVersion);
 
 MyEngine::Mesh* mesh = MyEngine::CreateMesh();
 
@@ -35,16 +37,16 @@ for(unsigned int i = 0; i < file->numBuffers; ++i)
 {
   mesh->StoreBuffer(
     i, // Buffer index. Referenced by index specs or vertex specs
-    file.GetBufferData(i), // Pointer to the data
-    file.buffers[i].size, // Size of the data in bytes
-    file.buffers[i].type // Vertex buffer or index buffer
+    file->GetBufferData(i), // Pointer to the data
+    file->buffers[i].size, // Size of the data in bytes
+    file->buffers[i].type // Vertex buffer or index buffer
   );
 }
 
 // Index specs define separate batches to draw:
-for(unsigned int i = 0; i < file.numIndexSpecs; ++i)
+for(unsigned int i = 0; i < file->numIndexSpecs; ++i)
 { 
-  const IndexBufferInfo& info = file.GetIndexSpec(i);
+  const IndexBufferInfo& info = file->GetIndexSpec(i);
   mesh->AddBatch(info.mode, // Draw mode (triangles, lines, ...)
     info.type, // Data type in index buffer (uint8, uint16, uint32)
     info.buffer, // Buffer index of index buffer :). See above.
@@ -56,9 +58,9 @@ for(unsigned int i = 0; i < file.numIndexSpecs; ++i)
 }
 
 // Vertex data sets define vertex attributes:
-for(unsigned int i = 0; i < file.numVertexDataSets; ++i)
+for(unsigned int i = 0; i < file->numVertexDataSets; ++i)
 {
-  const MeshFile::VertexDataSet& vSet = file.GetVertexDataSet(i);
+  const MeshFile::VertexDataSet& vSet = file->GetVertexDataSet(i);
   
   // Each vertex spec describes one vertex attribute, e.g. normal:
   for(unsigned int vSpec = 0; vSpec < vSet.numVertexSpecs; ++vSpec)
@@ -78,7 +80,7 @@ for(unsigned int i = 0; i < file.numVertexDataSets; ++i)
 }
 
 // Use precalculated axis-aligned bounding box:
-mesh->SetBounds(file.boundsMin, file.boundsMax);
+mesh->SetBounds(file->boundsMin, file->boundsMax);
 ```
 
 ## License ##
