@@ -64,11 +64,11 @@ for(unsigned int i = 0; i < file.numVertexDataSets; ++i)
   for(unsigned int vSpec = 0; vSpec < vSet.numVertexSpecs; ++vSpec)
   {
     const VertexAttributeInfo& info = file.GetVertexSpec(i, vSpec);
-    mesh->AddVertexDataSet(
+    mesh->AddVertexAttribute(
       i, // Index of the data set, referenced by IndexBufferInfo above
-      info.semantic, // position, normal, vertex color, ...
-      info.type, // data type like float16, int32, ...
-      info.components, // number of components for vector attributes, e.g. 3 for normals
+      info.semantic, // Position, normal, vertex color, ...
+      info.type, // Data type like float16, int32, ...
+      info.components, // Number of components for vector attributes, e.g. 3 for normals
       info.offset, // Offset into the vertex buffer in bytes
       info.stride, // Distance from one entry to the next (for interleaved data)
       info.buffer, // Buffer index of the vertex buffer
