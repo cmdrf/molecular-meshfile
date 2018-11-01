@@ -31,6 +31,9 @@ SOFTWARE.
 #include <algorithm>
 #include <array>
 
+namespace molecular
+{
+
 namespace ColladaToMesh
 {
 
@@ -463,3 +466,5 @@ void ReadVertexWeights(
 }
 
 }
+
+} // namespace molecular

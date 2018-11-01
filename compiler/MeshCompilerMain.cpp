@@ -33,6 +33,8 @@ SOFTWARE.
 #include "triListOpt.h"
 #include "CommandLineParser.h"
 
+using namespace molecular;
+
 int main(int argc, char** argv)
 {
 	CommandLineParser cmd;

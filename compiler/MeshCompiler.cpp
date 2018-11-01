@@ -28,6 +28,9 @@ SOFTWARE.
 #include "util/Range.h"
 #include "util/StringUtils.h"
 
+namespace molecular
+{
+
 namespace MeshCompiler
 {
 
@@ -474,3 +477,4 @@ void Compile(const MeshSet& meshes, WriteStorage& storage)
 
 } // namespace
 
+} // namespace molecular

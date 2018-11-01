@@ -30,6 +30,9 @@ SOFTWARE.
 #include <unordered_map>
 #include <unordered_set>
 
+namespace molecular
+{
+
 namespace MeshUtils
 {
 
@@ -202,4 +205,4 @@ void ReducePrecision(Mesh& mesh)
 
 } // namespace MeshUtils
 
- 
+} // namespace molecular

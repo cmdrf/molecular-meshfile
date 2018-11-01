@@ -23,13 +23,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef MESHUTILS_H
-#define MESHUTILS_H
+#ifndef MOLECULAR_MESHUTILS_H
+#define MOLECULAR_MESHUTILS_H
 
 #include "util/Vector3.h"
 #include "util/Matrix4.h"
 #include "Mesh.h"
 #include <vector>
+
+namespace molecular
+{
 
 namespace MeshUtils
 {
@@ -269,4 +272,6 @@ void SeparateToUnifiedIndices(
 
 }
 
-#endif // MESHUTILS_H
+} // namespace molecular
+
+#endif // MOLECULAR_MESHUTILS_H

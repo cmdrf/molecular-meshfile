@@ -23,11 +23,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef COLLADATOMESH_H
-#define COLLADATOMESH_H
+#ifndef MOLECULAR_COLLADATOMESH_H
+#define MOLECULAR_COLLADATOMESH_H
 
 #include "ColladaFile.h"
 #include "Mesh.h"
+
+namespace molecular
+{
 
 /// Functions to extract meshes and skin data from COLLADA files
 namespace ColladaToMesh
@@ -52,4 +55,6 @@ void ReadVertexWeights(const ColladaFile::Skin& skin,
 		std::vector<IntVector4>& outJointIndices);
 }
 
-#endif // COLLADATOMESH_H
+} // namespace molecular
+
+#endif // MOLECULAR_COLLADATOMESH_H

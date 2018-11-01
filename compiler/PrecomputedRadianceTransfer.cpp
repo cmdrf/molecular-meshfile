@@ -30,6 +30,9 @@ SOFTWARE.
 #include <Opcode.h>
 #undef for // WTF?
 
+namespace molecular
+{
+
 namespace PrecomputedRadianceTransfer
 {
 
@@ -157,4 +160,6 @@ void CalculateDiffuseShadowed(Mesh& mesh, std::vector<SphericalHarmonics::Sample
 	mesh.SetAttributeData(VertexAttributeInfo::kVertexPrt2, outPrt2.data(), numVertices);
 }
 
-}
+} // namespace PrecomputedRadianceTransfer
+
+} // namespace molecular

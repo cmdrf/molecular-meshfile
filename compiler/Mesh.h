@@ -23,8 +23,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef MESH_H
-#define MESH_H
+#ifndef MOLECULAR_MESH_H
+#define MOLECULAR_MESH_H
 
 #include <vector>
 #include "util/Hash.h"
@@ -33,6 +33,9 @@ SOFTWARE.
 #include "util/Vector4.h"
 #include <unordered_map>
 #include <cassert>
+
+namespace molecular
+{
 
 using Hash = uint32_t;
 
@@ -176,4 +179,6 @@ private:
 
 using MeshSet = std::vector<Mesh>;
 
-#endif // MESH_H
+}
+
+#endif // MOLECULAR_MESH_H

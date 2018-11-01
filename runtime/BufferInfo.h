@@ -23,11 +23,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef BUFFERINFO_H
-#define BUFFERINFO_H
+#ifndef MOLECULAR_BUFFERINFO_H
+#define MOLECULAR_BUFFERINFO_H
 
 #include <string>
 #include <ostream>
+
+namespace molecular
+{
 
 /// Information about vertex attribute data in a buffer
 struct VertexAttributeInfo
@@ -177,4 +180,6 @@ inline std::ostream& operator<<(std::ostream& o, VertexAttributeInfo::Type type)
 	}
 }
 
-#endif // BUFFERINFO_H
+}
+
+#endif // MOLECULAR_BUFFERINFO_H

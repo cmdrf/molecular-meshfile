@@ -23,14 +23,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef MESHCOMPILER_H
-#define MESHCOMPILER_H
+#ifndef MOLECULAR_MESHCOMPILER_H
+#define MOLECULAR_MESHCOMPILER_H
 
 #include "util/StreamStorage.h"
 #include "MeshFile.h"
 #include "ObjFile.h"
 #include "Mesh.h"
 #include "BufferInfo.h"
+
+namespace molecular
+{
 
 /// Functions for writing optimized mesh files
 namespace MeshCompiler
@@ -58,5 +61,7 @@ void Compile(const MeshSet& meshes, WriteStorage& storage);
 
 }
 
-#endif // MESHCOMPILER_H
+} // namespace molecular
+
+#endif // MOLECULAR_MESHCOMPILER_H
 

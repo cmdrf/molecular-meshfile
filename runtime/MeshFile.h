@@ -23,13 +23,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef MESHFILE_H
-#define MESHFILE_H
+#ifndef MOLECULAR_MESHFILE_H
+#define MOLECULAR_MESHFILE_H
 
 #include <cstdint>
 #include <cassert>
 #include "BufferInfo.h"
 #include <iostream>
+
+namespace molecular
+{
 
 /// File structure for meshes
 /** Cast your file contents to this to access mesh data.
@@ -119,5 +122,7 @@ inline std::ostream& operator<<(std::ostream& o, MeshFile::Buffer::Type type)
 	return o;
 }
 
-#endif // MESHFILE_H
+}
+
+#endif // MOLECULAR_MESHFILE_H
 

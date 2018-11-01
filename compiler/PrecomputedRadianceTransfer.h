@@ -23,10 +23,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef PRECOMPUTEDRADIANCETRANSFER_H
-#define PRECOMPUTEDRADIANCETRANSFER_H
+#ifndef MOLECULAR_PRECOMPUTEDRADIANCETRANSFER_H
+#define MOLECULAR_PRECOMPUTEDRADIANCETRANSFER_H
 
 #include "util/SphericalHarmonics.h"
+
+namespace molecular
+{
 
 class Mesh;
 
@@ -37,4 +40,6 @@ void CalculateDiffuseUnshadowed(Mesh& mesh, std::vector<SphericalHarmonics::Samp
 void CalculateDiffuseShadowed(Mesh& mesh, std::vector<SphericalHarmonics::Sample<3>> samples = SphericalHarmonics::SetupSphericalSamples<3>());
 }
 
-#endif // PRECOMPUTEDRADIANCETRANSFER_H
+}
+
+#endif // MOLECULAR_PRECOMPUTEDRADIANCETRANSFER_H
