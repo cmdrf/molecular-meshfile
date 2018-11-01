@@ -23,8 +23,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef AXISALIGNEDBOX_H
-#define AXISALIGNEDBOX_H
+#ifndef MOLECULAR_AXISALIGNEDBOX_H
+#define MOLECULAR_AXISALIGNEDBOX_H
 
 #undef min
 #undef max
@@ -33,6 +33,9 @@ SOFTWARE.
 #include <cassert>
 #include <limits>
 #include <stdexcept>
+
+namespace molecular
+{
 
 /// Axis aligned (bounding) box (AABB)
 class AxisAlignedBox
@@ -70,5 +73,6 @@ inline void AxisAlignedBox::Stretch(const Vector3& vec)
 	}
 }
 
+} // namespace molecular
 
-#endif // AXISALIGNEDBOX_H
+#endif // MOLECULAR_AXISALIGNEDBOX_H

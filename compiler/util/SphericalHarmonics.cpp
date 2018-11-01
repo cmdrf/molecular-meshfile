@@ -28,6 +28,9 @@ SOFTWARE.
 #include <cassert>
 #include <random>
 
+namespace molecular
+{
+
 namespace SphericalHarmonics
 {
 
@@ -185,3 +188,5 @@ template std::vector<Sample<3>> SetupSphericalSamples<3>(unsigned int samplesCou
 template std::vector<Sample<4>> SetupSphericalSamples<4>(unsigned int samplesCount);
 
 }
+
+} // namespace molecular

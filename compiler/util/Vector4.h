@@ -21,10 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef VECTOR4_H
-#define VECTOR4_H
+
+#ifndef MOLECULAR_VECTOR4_H
+#define MOLECULAR_VECTOR4_H
 
 #include "Vector3.h"
+
+namespace molecular
+{
 
 /// Four-dimensional vector
 class Vector4 : public VectorTmpl<4, Vector4>
@@ -41,4 +45,6 @@ inline std::ostream& operator<<(std::ostream& stream, const Vector4& vec)
 	return stream;
 }
 
-#endif // VECTOR4_H
+} // namespace molecular
+
+#endif // MOLECULAR_VECTOR4_H

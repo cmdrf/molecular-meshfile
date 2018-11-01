@@ -23,12 +23,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
-#ifndef MATRIX4_H
-#define MATRIX4_H
+#ifndef MOLECULAR_MATRIX4_H
+#define MOLECULAR_MATRIX4_H
 
 #include "Matrix.h"
 #include "Vector4.h"
+
+namespace molecular
+{
 
 /// A 4x4 matrix
 class Matrix4 : public Matrix<4, 4>
@@ -52,4 +54,6 @@ inline Vector4 Matrix4::operator*(const Vector4& v) const
 	return Vector4(out(0, 0), out(1, 0), out(2, 0), out(3, 0));
 }
 
-#endif // MATRIX4_H
+} // namespace molecular
+
+#endif // MOLECULAR_MATRIX4_H

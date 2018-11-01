@@ -23,12 +23,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
-#ifndef STREAMSTORAGE_H
-#define STREAMSTORAGE_H
+#ifndef MOLECULAR_STREAMSTORAGE_H
+#define MOLECULAR_STREAMSTORAGE_H
 
 #include <stdint.h> // uint8_t
 #include <stdlib.h> // size_t
+
+namespace molecular
+{
 
 /// Base class for data storage to be read from
 /** Data storage can be be files, memory blocks and the like. */
@@ -58,5 +60,7 @@ public:
 	virtual size_t GetCursor() const = 0;
 	virtual void SetCursor(size_t cursor) = 0;
 };
+
+} // namespace molecular
 
 #endif

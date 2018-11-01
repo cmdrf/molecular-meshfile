@@ -25,6 +25,9 @@ SOFTWARE.
 
 #include "FloatToHalf.h"
 
+namespace molecular
+{
+
 FloatToHalf::FloatToHalf()
 {
 	for(int i0 = 0; i0 < 256; ++i0)
@@ -68,3 +71,5 @@ FloatToHalf::FloatToHalf()
 		}
 	}
 }
+
+} // namespace molecular

@@ -23,10 +23,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef VECTOR3_H
-#define VECTOR3_H
+#ifndef MOLECULAR_VECTOR3_H
+#define MOLECULAR_VECTOR3_H
 
 #include "Vector.h"
+
+namespace molecular
+{
 
 /// Generic vector with 3 elements
 template<typename T>
@@ -94,6 +97,8 @@ std::ostream& operator<<(std::ostream& stream, const Vector3T<T>& vec)
 	stream << "(" << vec[0] << ", " << vec[1] << ", " << vec[2] << ")";
 	return stream;
 }
+
+} // namespace molecular
 
 #endif
 

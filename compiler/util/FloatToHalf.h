@@ -23,11 +23,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
-#ifndef FLOATTOHALF_H
-#define FLOATTOHALF_H
+#ifndef MOLECULAR_FLOATTOHALF_H
+#define MOLECULAR_FLOATTOHALF_H
 
 #include <cstdint>
+
+namespace molecular
+{
 
 /// Converts 32 bit to 16 bit floating point numbers
 /** Fast Half Float Conversions, Jeroen van der Zijp, November 2008
@@ -48,4 +50,6 @@ private:
 	int8_t mShiftTable[512];
 };
 
-#endif // FLOATTOHALF_H
+}
+
+#endif // MOLECULAR_FLOATTOHALF_H

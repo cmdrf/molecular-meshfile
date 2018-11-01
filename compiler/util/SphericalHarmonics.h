@@ -23,13 +23,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef SPHERICALHARMONICS_H
-#define SPHERICALHARMONICS_H
+#ifndef MOLECULAR_SPHERICALHARMONICS_H
+#define MOLECULAR_SPHERICALHARMONICS_H
 
 #include "Vector3.h"
 #include "Vector.h"
 #include <array>
 #include <vector>
+
+namespace molecular
+{
 
 namespace SphericalHarmonics
 {
@@ -55,5 +58,7 @@ extern template std::vector<Sample<3>> SetupSphericalSamples<3>(unsigned int sam
 extern template std::vector<Sample<4>> SetupSphericalSamples<4>(unsigned int samplesCount);
 
 }
+
+} // namespace molecular
 
 #endif // SPHERICALHARMONICS_H

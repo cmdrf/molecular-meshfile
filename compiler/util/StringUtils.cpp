@@ -23,7 +23,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
 #include "StringUtils.h"
 
 #include <cstdarg>
@@ -37,6 +36,9 @@ SOFTWARE.
 #if __APPLE__
 #include <xlocale.h>
 #endif
+
+namespace molecular
+{
 
 namespace StringUtils
 {
@@ -85,3 +87,5 @@ std::string StrError(int errnum)
 }
 
 }
+
+} // namespace molecular

@@ -23,9 +23,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#ifndef MOLECULAR_RANGE_H
+#define MOLECULAR_RANGE_H
 
-#ifndef RANGE_H
-#define RANGE_H
+namespace molecular
+{
 
 /// Pair of iterators
 /** Can be used in range-based for loops. */
@@ -54,5 +56,7 @@ Range<typename T::iterator> MakeRange(T container)
 	return Range<typename T::iterator>(begin(container), end(container));
 }
 
-#endif // RANGE_H
+} // namespace molecular
+
+#endif // MOLECULAR_RANGE_H
 

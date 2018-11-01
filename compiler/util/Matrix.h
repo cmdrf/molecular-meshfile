@@ -23,15 +23,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
-#ifndef MATRIX_H
-#define MATRIX_H
+#ifndef MOLECULAR_MATRIX_H
+#define MOLECULAR_MATRIX_H
 
 #include <iostream>
 #include <initializer_list>
 #include <cassert>
 #include <cmath>
 #include <algorithm>
+
+namespace molecular
+{
 
 /// Generic matrix template class
 template<int rows, int cols, typename T = float>
@@ -207,5 +209,7 @@ std::ostream& operator<<(std::ostream& o, const Matrix<rows, cols, T>& m)
 	}
 	return o;
 }
+
+} // namespace molecular
 
 #endif // MATRIX_H

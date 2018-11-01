@@ -25,6 +25,9 @@ SOFTWARE.
 
 #include "FileStreamStorage.h"
 
+namespace molecular
+{
+
 FileReadStorage::FileReadStorage(FileReadStorage&& that) noexcept :
 	mFile(that.mFile)
 {
@@ -84,3 +87,5 @@ FileWriteStorage::~FileWriteStorage()
 	assert(mFile);
 	fclose(mFile);
 }
+
+} // namespace molecular

@@ -23,13 +23,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
-#ifndef STRINGUTILS_H
-#define STRINGUTILS_H
+#ifndef MOLECULAR_STRINGUTILS_H
+#define MOLECULAR_STRINGUTILS_H
 
 #include <string>
 #include <vector>
 #include <cstring>
+
+namespace molecular
+{
 
 namespace StringUtils
 {
@@ -64,4 +66,6 @@ void Copy(const std::string& source, char (&dest)[size])
 
 }
 
-#endif // STRINGUTILS_H
+} // namespace molecular
+
+#endif // MOLECULAR_STRINGUTILS_H

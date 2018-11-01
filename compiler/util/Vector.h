@@ -23,11 +23,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef VECTOR_H
-#define VECTOR_H
+#ifndef MOLECULAR_VECTOR_H
+#define MOLECULAR_VECTOR_H
 
 #include <cmath>
 #include <iostream>
+
+namespace molecular
+{
 
 /// Vector base class template
 /** Cannot be instanciated directly. Use typedef or subclassing, or the Vector
@@ -317,4 +320,6 @@ inline std::ostream& operator<<(std::ostream& stream, const IntVector4& vec)
 	return stream;
 }
 
-#endif // VECTOR_H
+} // namespace molecular
+
+#endif // MOLECULAR_VECTOR_H

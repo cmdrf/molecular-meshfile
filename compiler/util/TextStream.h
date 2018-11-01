@@ -23,11 +23,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef TEXTSTREAM_H
-#define TEXTSTREAM_H
+#ifndef MOLECULAR_TEXTSTREAM_H
+#define MOLECULAR_TEXTSTREAM_H
 
 #include <stdexcept>
 #include <stdint.h>
+
+namespace molecular
+{
 
 class TextReadStreamBase
 {
@@ -74,5 +77,7 @@ private:
 	char mLine[kMaxLineLength];
 	Storage& mStorage;
 };
+
+} // namespace molecular
 
 #endif // TEXTSTREAM_H
