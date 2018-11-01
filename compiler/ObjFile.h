@@ -23,14 +23,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef OBJFILE_H
-#define OBJFILE_H
+#ifndef MOLECULAR_OBJFILE_H
+#define MOLECULAR_OBJFILE_H
 
 #include "util/Vector3.h"
 #include "util/AxisAlignedBox.h"
 #include "util/TextStream.h"
 #include <vector>
 #include <array>
+
+namespace molecular
+{
 
 /// Reads 3D models in .obj text files
 class ObjFile
@@ -135,4 +138,6 @@ protected:
 
 };
 
-#endif // OBJFILE_H
+} // namespace molecular
+
+#endif // MOLECULAR_OBJFILE_H

@@ -25,6 +25,8 @@ SOFTWARE.
 
 #include "CharacterAnimation.h"
 
+namespace molecular
+{
 namespace CharacterAnimation
 {
 
@@ -123,3 +125,5 @@ int GetBoneIndex(Hash hash)
 }
 
 }
+
+} // namespace molecular

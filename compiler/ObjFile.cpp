@@ -27,6 +27,9 @@ SOFTWARE.
 #include "util/StringUtils.h"
 #include <cstring>
 
+namespace molecular
+{
+
 ObjFile::ObjFile(TextReadStreamBase& stream, float scale) :
 	mScale(scale)
 {
@@ -240,3 +243,5 @@ void ObjFile::NewVertexGroup(const std::string& name, const std::string& materia
 	group.material = material;
 	mVertexGroups.push_back(group);
 }
+
+} // namespace molecular

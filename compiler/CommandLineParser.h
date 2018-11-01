@@ -23,13 +23,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef COMMANDLINEPARSER_H
-#define COMMANDLINEPARSER_H
+#ifndef MOLECULAR_COMMANDLINEPARSER_H
+#define MOLECULAR_COMMANDLINEPARSER_H
 
 #include <string>
 #include <unordered_map>
 #include <vector>
 #include <sstream>
+
+namespace molecular
+{
 
 class CommandLineParser
 {
@@ -163,4 +166,6 @@ private:
 	T mValue;
 };
 
-#endif // COMMANDLINEPARSER_H
+} // namespace molecular
+
+#endif // MOLECULAR_COMMANDLINEPARSER_H

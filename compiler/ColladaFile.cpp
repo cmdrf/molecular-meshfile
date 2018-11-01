@@ -27,6 +27,9 @@ SOFTWARE.
 #include "util/StringUtils.h"
 #include <stdexcept>
 
+namespace molecular
+{
+
 ColladaFile::ColladaFile(const char* filename)
 {
 	pugi::xml_parse_result result = mDocument.load_file(filename);
@@ -345,3 +348,5 @@ std::vector<int> ColladaFile::VertexWeights::GetV() const
 		throw std::runtime_error("No v in vertex_weights");
 	return ReadIntArray(v.child_value());
 }
+
+} // namespace molecular

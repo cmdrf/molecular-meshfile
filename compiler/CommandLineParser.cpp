@@ -26,6 +26,9 @@ SOFTWARE.
 #include "CommandLineParser.h"
 #include <iostream>
 
+namespace molecular
+{
+
 CommandLineParser::CommandLineParser()
 {
 
@@ -98,3 +101,4 @@ void CommandLineParser::Flag::Parse(int& i, int /*argc*/, char** /*argv*/)
 {
 }
 
+} // namespace molecular

@@ -23,14 +23,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef COLLADAFILE_H
-#define COLLADAFILE_H
+#ifndef MOLECULAR_COLLADAFILE_H
+#define MOLECULAR_COLLADAFILE_H
 
 #include "util/Matrix4.h"
 #include "util/Hash.h"
 #include <pugixml.hpp>
 #include <vector>
 #include <stdexcept>
+
+namespace molecular
+{
 
 class ColladaFile
 {
@@ -425,4 +428,6 @@ private:
 	VisualScene(pugi::xml_node visualScene) : Base(visualScene) {}
 };
 
-#endif // COLLADAFILE_H
+}
+
+#endif // MOLECULAR_COLLADAFILE_H

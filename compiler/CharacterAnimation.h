@@ -23,12 +23,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef CHARACTERANIMATION_H
-#define CHARACTERANIMATION_H
+#ifndef MOLECULAR_CHARACTERANIMATION_H
+#define MOLECULAR_CHARACTERANIMATION_H
 
 #include <cstdint>
 #include "util/Matrix4.h"
 #include "util/Hash.h"
+
+namespace molecular
+{
 
 namespace CharacterAnimation
 {
@@ -38,4 +41,6 @@ int GetBoneIndex(Hash hash);
 
 }
 
-#endif // CHARACTERANIMATION_H
+} // namespace molecular
+
+#endif // MOLECULAR_CHARACTERANIMATION_H
