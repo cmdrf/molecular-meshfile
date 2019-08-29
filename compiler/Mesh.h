@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018 Fabian Herb
+Copyright (c) 2018-2019 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,13 +26,15 @@ SOFTWARE.
 #ifndef MOLECULAR_MESH_H
 #define MOLECULAR_MESH_H
 
-#include <vector>
-#include "util/Hash.h"
 #include "BufferInfo.h"
-#include "util/Vector3.h"
-#include "util/Vector4.h"
-#include <unordered_map>
+
+#include <molecular/util/Hash.h>
+#include <molecular/util/Vector3.h>
+#include <molecular/util/Vector4.h>
+
 #include <cassert>
+#include <unordered_map>
+#include <vector>
 
 namespace molecular
 {

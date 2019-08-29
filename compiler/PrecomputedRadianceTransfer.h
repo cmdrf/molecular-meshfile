@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018 Fabian Herb
+Copyright (c) 2018-2019 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@ SOFTWARE.
 #ifndef MOLECULAR_PRECOMPUTEDRADIANCETRANSFER_H
 #define MOLECULAR_PRECOMPUTEDRADIANCETRANSFER_H
 
-#include "util/SphericalHarmonics.h"
+#include <molecular/util/SphericalHarmonics.h>
 
 namespace molecular
 {

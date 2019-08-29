@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018 Fabian Herb
+Copyright (c) 2018-2019 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@ SOFTWARE.
 
 #include "PrecomputedRadianceTransfer.h"
 #include "Mesh.h"
-#include "util/Vector3.h"
+#include <molecular/util/Vector3.h>
 
 #include <Opcode.h>
 #undef for // WTF?

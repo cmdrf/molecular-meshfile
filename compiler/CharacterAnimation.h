@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018 Fabian Herb
+Copyright (c) 2018-2019 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,8 @@ SOFTWARE.
 #ifndef MOLECULAR_CHARACTERANIMATION_H
 #define MOLECULAR_CHARACTERANIMATION_H
 
-#include <cstdint>
-#include "util/Matrix4.h"
-#include "util/Hash.h"
+#include <molecular/util/Matrix4.h>
+#include <molecular/util/Hash.h>
 
 namespace molecular
 {

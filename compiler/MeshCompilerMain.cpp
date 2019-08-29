@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018 Fabian Herb
+Copyright (c) 2018-2019 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,15 @@ SOFTWARE.
 */
 
 #include "MeshCompiler.h"
-#include "util/FileStreamStorage.h"
-#include "util/StringUtils.h"
 #include "PrecomputedRadianceTransfer.h"
 #include "MeshUtils.h"
 #include "ColladaFile.h"
 #include "ColladaToMesh.h"
 #include "triListOpt.h"
-#include "CommandLineParser.h"
+
+#include <molecular/util/CommandLineParser.h>
+#include <molecular/util/FileStreamStorage.h>
+#include <molecular/util/StringUtils.h>
 
 using namespace molecular;
 

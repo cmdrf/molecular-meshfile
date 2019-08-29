@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018 Fabian Herb
+Copyright (c) 2018-2019 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,11 @@ SOFTWARE.
 #ifndef MOLECULAR_MESHUTILS_H
 #define MOLECULAR_MESHUTILS_H
 
-#include "util/Vector3.h"
-#include "util/Matrix4.h"
 #include "Mesh.h"
+
+#include <molecular/util/Vector3.h>
+#include <molecular/util/Matrix4.h>
+
 #include <vector>
 
 namespace molecular

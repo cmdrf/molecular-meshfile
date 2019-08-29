@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018 Fabian Herb
+Copyright (c) 2018-2019 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,9 @@ SOFTWARE.
 
 #include "MeshCompiler.h"
 #include "MeshUtils.h"
-#include "util/Range.h"
-#include "util/StringUtils.h"
+
+#include <molecular/util/Range.h>
+#include <molecular/util/StringUtils.h>
 
 namespace molecular
 {

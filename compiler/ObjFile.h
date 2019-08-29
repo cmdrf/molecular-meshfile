@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018 Fabian Herb
+Copyright (c) 2018-2019 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,9 @@ SOFTWARE.
 #ifndef MOLECULAR_OBJFILE_H
 #define MOLECULAR_OBJFILE_H
 
-#include "util/Vector3.h"
-#include "util/AxisAlignedBox.h"
-#include "util/TextStream.h"
+#include <molecular/util/Vector3.h>
+#include <molecular/util/AxisAlignedBox.h>
+#include <molecular/util/TextStream.h>
 #include <vector>
 #include <array>
 

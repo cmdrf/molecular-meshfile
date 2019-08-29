@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018 Fabian Herb
+Copyright (c) 2018-2019 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#include "CharacterAnimation.h"
 #include "ColladaToMesh.h"
 #include "Mesh.h"
 #include "MeshUtils.h"
-#include "util/StringUtils.h"
-#include "CharacterAnimation.h"
+
+#include <molecular/util/StringUtils.h>
+
 #include <algorithm>
 #include <array>
 
