@@ -27,7 +27,7 @@ SOFTWARE.
 #define MOLECULAR_COLLADATOMESH_H
 
 #include "ColladaFile.h"
-#include "Mesh.h"
+#include <molecular/util/Mesh.h>
 
 namespace molecular
 {

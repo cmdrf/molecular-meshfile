@@ -27,10 +27,10 @@ SOFTWARE.
 #define MOLECULAR_MESHCOMPILER_H
 
 #include <molecular/util/StreamStorage.h>
-#include "MeshFile.h"
+#include <molecular/meshfile/MeshFile.h>
 #include "ObjFile.h"
-#include "Mesh.h"
-#include "BufferInfo.h"
+#include <molecular/util/Mesh.h>
+#include <molecular/util/BufferInfo.h>
 
 namespace molecular
 {

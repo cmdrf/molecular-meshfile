@@ -25,8 +25,8 @@ SOFTWARE.
 
 #include "CharacterAnimation.h"
 #include "ColladaToMesh.h"
-#include "Mesh.h"
-#include "MeshUtils.h"
+#include <molecular/util/Mesh.h>
+#include <molecular/util/MeshUtils.h>
 
 #include <molecular/util/StringUtils.h>
 

@@ -25,7 +25,7 @@ SOFTWARE.
 
 #include "MeshCompiler.h"
 #include "PrecomputedRadianceTransfer.h"
-#include "MeshUtils.h"
+#include <molecular/util/MeshUtils.h>
 #include "ColladaFile.h"
 #include "ColladaToMesh.h"
 #include "triListOpt.h"

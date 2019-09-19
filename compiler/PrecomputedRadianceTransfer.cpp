@@ -24,7 +24,7 @@ SOFTWARE.
 */
 
 #include "PrecomputedRadianceTransfer.h"
-#include "Mesh.h"
+#include <molecular/util/Mesh.h>
 #include <molecular/util/Vector3.h>
 
 #include <Opcode.h>

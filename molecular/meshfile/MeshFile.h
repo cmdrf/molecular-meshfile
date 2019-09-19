@@ -28,7 +28,7 @@ SOFTWARE.
 
 #include <cstdint>
 #include <cassert>
-#include "BufferInfo.h"
+#include <molecular/util/BufferInfo.h>
 #include <iostream>
 
 namespace molecular

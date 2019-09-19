@@ -24,7 +24,7 @@ SOFTWARE.
 */
 
 #include "MeshCompiler.h"
-#include "MeshUtils.h"
+#include <molecular/util/MeshUtils.h>
 
 #include <molecular/util/Range.h>
 #include <molecular/util/StringUtils.h>
@@ -425,7 +425,7 @@ void Compile(const MeshSet& meshes, WriteStorage& storage)
 	std::vector<std::vector<VertexAttributeInfo>> vertexDataSets;
 	std::vector<unsigned int> vertexDataSetVertexCounts;
 	std::vector<IndexBufferInfo> indexSpecs;
-	AxisAlignedBox bounds;
+	util::AxisAlignedBox bounds;
 
 	for(auto& mesh: meshes)
 	{

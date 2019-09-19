@@ -96,7 +96,7 @@ public:
 //	bool HasNormals() const {return !mNormals.empty();}
 //	bool HasTexCoords() const {return !mTexCoords.empty();}
 
-	const AxisAlignedBox& GetBoundingBox() const {return mBoundingBox;}
+	const util::AxisAlignedBox& GetBoundingBox() const {return mBoundingBox;}
 
 protected:
 	/// Vertex coordinates
@@ -133,7 +133,7 @@ protected:
 
 	void NewVertexGroup(const std::string& name, const std::string& material);
 
-	AxisAlignedBox mBoundingBox;
+	util::AxisAlignedBox mBoundingBox;
 	float mScale;
 
 };
