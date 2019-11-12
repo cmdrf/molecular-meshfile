@@ -77,7 +77,8 @@ struct MeshFile
 	float boundsMin[3]; ///< Axis aligned bounding box minimum @see AxisAlignedBox
 	float boundsMax[3]; ///< Axis aligned bounding box maximum @see AxisAlignedBox
 
-	Buffer buffers[0];
+	// Buffers of type MeshFile::Buffer start here.
+	// Use GetBuffer or GetBufferData to access these buffers.
 
 	const VertexDataSet& GetVertexDataSet(unsigned int i) const
 	{
@@ -100,8 +101,13 @@ struct MeshFile
 
 	const void* GetBufferData(unsigned int i) const
 	{
+		return reinterpret_cast<const char*>(this) + GetBuffer(i).offset;
+	}
+
+	const MeshFile::Buffer& GetBuffer(unsigned int i) const
+	{
 		assert(i < numBuffers);
-		return reinterpret_cast<const char*>(this) + buffers[i].offset;
+		return reinterpret_cast<const MeshFile::Buffer*>(this + 1)[i];
 	}
 };
 
