@@ -34,6 +34,8 @@ SOFTWARE.
 
 namespace molecular
 {
+namespace util
+{
 
 class ColladaFile
 {
@@ -428,6 +430,7 @@ private:
 	VisualScene(pugi::xml_node visualScene) : Base(visualScene) {}
 };
 
+}
 }
 
 #endif // MOLECULAR_COLLADAFILE_H

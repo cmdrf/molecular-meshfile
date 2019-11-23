@@ -36,6 +36,8 @@ namespace molecular
 namespace ColladaToMesh
 {
 
+using namespace util;
+
 Mesh ToMesh(const ColladaFile& file, const ColladaFile::Mesh& mesh);
 
 MeshSet ToMesh(const ColladaFile& file, const ColladaFile::Node& node);

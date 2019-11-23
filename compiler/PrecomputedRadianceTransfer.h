@@ -31,13 +31,16 @@ SOFTWARE.
 namespace molecular
 {
 
+namespace util
+{
 class Mesh;
+}
 
 namespace PrecomputedRadianceTransfer
 {
 
-void CalculateDiffuseUnshadowed(Mesh& mesh, std::vector<SphericalHarmonics::Sample<3>> samples = SphericalHarmonics::SetupSphericalSamples<3>());
-void CalculateDiffuseShadowed(Mesh& mesh, std::vector<SphericalHarmonics::Sample<3>> samples = SphericalHarmonics::SetupSphericalSamples<3>());
+void CalculateDiffuseUnshadowed(util::Mesh& mesh, std::vector<util::SphericalHarmonics::Sample<3>> samples = util::SphericalHarmonics::SetupSphericalSamples<3>());
+void CalculateDiffuseShadowed(util::Mesh& mesh, std::vector<util::SphericalHarmonics::Sample<3>> samples = util::SphericalHarmonics::SetupSphericalSamples<3>());
 }
 
 }

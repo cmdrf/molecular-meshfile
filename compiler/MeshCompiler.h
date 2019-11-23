@@ -54,10 +54,10 @@ void Compile(
 /** @deprecated Use ObjFileToMeshSet first. */
 void Compile(ObjFile& objFile, WriteStorage& storage);
 
-MeshSet ObjFileToMeshSet(ObjFile& objFile);
+util::MeshSet ObjFileToMeshSet(ObjFile& objFile);
 
 /** @todo Optimize vertex buffer layout. */
-void Compile(const MeshSet& meshes, WriteStorage& storage);
+void Compile(const util::MeshSet& meshes, WriteStorage& storage);
 
 }
 

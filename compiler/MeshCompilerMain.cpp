@@ -35,6 +35,7 @@ SOFTWARE.
 #include <molecular/util/StringUtils.h>
 
 using namespace molecular;
+using namespace molecular::util;
 
 int main(int argc, char** argv)
 {

@@ -29,6 +29,8 @@ SOFTWARE.
 
 namespace molecular
 {
+namespace util
+{
 
 ColladaFile::ColladaFile(const char* filename)
 {
@@ -349,4 +351,5 @@ std::vector<int> ColladaFile::VertexWeights::GetV() const
 	return ReadIntArray(v.child_value());
 }
 
+}
 } // namespace molecular

@@ -32,6 +32,7 @@ SOFTWARE.
 
 namespace molecular
 {
+using namespace util;
 
 namespace PrecomputedRadianceTransfer
 {
