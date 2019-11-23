@@ -33,6 +33,9 @@ SOFTWARE.
 
 namespace molecular
 {
+namespace meshfile
+{
+using namespace util;
 
 /// File structure for meshes
 /** Cast your file contents to this to access mesh data.
@@ -128,6 +131,7 @@ inline std::ostream& operator<<(std::ostream& o, MeshFile::Buffer::Type type)
 	return o;
 }
 
+}
 }
 
 #endif // MOLECULAR_MESHFILE_H

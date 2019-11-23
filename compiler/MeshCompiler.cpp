@@ -32,6 +32,7 @@ SOFTWARE.
 namespace molecular
 {
 using namespace util;
+using namespace meshfile;
 
 namespace MeshCompiler
 {
