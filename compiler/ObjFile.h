@@ -34,6 +34,7 @@ SOFTWARE.
 
 namespace molecular
 {
+using namespace util;
 
 /// Reads 3D models in .obj text files
 class ObjFile
