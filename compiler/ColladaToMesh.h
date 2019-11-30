@@ -31,6 +31,8 @@ SOFTWARE.
 
 namespace molecular
 {
+namespace meshfile
+{
 
 /// Functions to extract meshes and skin data from COLLADA files
 namespace ColladaToMesh
@@ -56,7 +58,7 @@ void ReadVertexWeights(const ColladaFile::Skin& skin,
 		std::vector<Vector4>& outWeights,
 		std::vector<IntVector4>& outJointIndices);
 }
-
+}
 } // namespace molecular
 
 #endif // MOLECULAR_COLLADATOMESH_H

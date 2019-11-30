@@ -23,11 +23,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include "CharacterAnimation.h"
 #include "ColladaToMesh.h"
+
+#include <molecular/util/CharacterAnimation.h>
 #include <molecular/util/Mesh.h>
 #include <molecular/util/MeshUtils.h>
-
 #include <molecular/util/StringUtils.h>
 
 #include <algorithm>
@@ -35,9 +35,11 @@ SOFTWARE.
 
 namespace molecular
 {
-
+namespace meshfile
+{
 namespace ColladaToMesh
 {
+using namespace util;
 
 void ReadMeshData(
 		const ColladaFile::Mesh& mesh,
@@ -366,11 +368,11 @@ void FileToEngineJointIndices(const std::vector<Hash> fileJointNames, std::vecto
 		{
 			if(indices[i] >= 0)
 			{
-				auto index = indices[i];
+				size_t index = indices[i];
 				if(index >= fileJointNames.size())
 					throw std::runtime_error("Joint index out of bounds");
 				Hash name = fileJointNames[index];
-				indices[i] = CharacterAnimation::GetBoneIndex(name);
+				indices[i] = util::CharacterAnimation::GetBoneIndex(name);
 			}
 		}
 	}
@@ -437,7 +439,7 @@ void ReadVertexWeights(
 				float weight = 0;
 			};
 			std::array<VertexInfluence, 10> vertexInfluences;
-			for(unsigned int i = 0; i < vertexCount; i++)
+			for(int i = 0; i < vertexCount; i++)
 			{
 				vertexInfluences[i].joint = *vertexIt;
 				vertexIt++;
@@ -468,5 +470,5 @@ void ReadVertexWeights(
 }
 
 }
-
+}
 } // namespace molecular

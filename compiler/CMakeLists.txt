@@ -2,8 +2,6 @@
 add_executable(molecularmeshcompiler
 	MeshCompilerMain.cpp
 
-	CharacterAnimation.cpp
-	CharacterAnimation.h
 	ColladaFile.cpp
 	ColladaFile.h
 	ColladaToMesh.cpp

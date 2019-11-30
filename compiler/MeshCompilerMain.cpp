@@ -36,6 +36,7 @@ SOFTWARE.
 
 using namespace molecular;
 using namespace molecular::util;
+using namespace molecular::meshfile;
 
 int main(int argc, char** argv)
 {
