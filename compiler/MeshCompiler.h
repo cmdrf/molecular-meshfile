@@ -50,10 +50,6 @@ void Compile(
 		WriteStorage& storage
 		);
 
-/// Compile OBJ file
-/** @deprecated Use ObjFileToMeshSet first. */
-void Compile(ObjFile& objFile, WriteStorage& storage);
-
 util::MeshSet ObjFileToMeshSet(ObjFile& objFile);
 
 /** @todo Optimize vertex buffer layout. */
