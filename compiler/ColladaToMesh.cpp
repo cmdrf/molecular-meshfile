@@ -43,9 +43,9 @@ using namespace util;
 
 void ReadMeshData(
 		const ColladaFile::Mesh& mesh,
-		std::vector<uint16_t>& outPositionIndices,
-		std::vector<uint16_t>& outNormalIndices,
-		std::vector<uint16_t>& outTexCoordIndices,
+		std::vector<uint32_t>& outPositionIndices,
+		std::vector<uint32_t>& outNormalIndices,
+		std::vector<uint32_t>& outTexCoordIndices,
 		std::vector<Vector3>& outPositions,
 		std::vector<Vector3>& outNormals,
 		std::vector<Vector2>& outTexCoords)
@@ -149,7 +149,7 @@ void ReadMeshData(
 }
 
 Mesh ToMesh(
-		const std::vector<uint16_t>& indices,
+		const std::vector<uint32_t>& indices,
 		const std::vector<Vector3>& positions,
 		const std::vector<Vector3>& normals,
 		const std::vector<Vector2>& texCoords)
@@ -165,7 +165,7 @@ Mesh ToMesh(
 	outMesh.SetMode(IndexBufferInfo::Mode::kTriangles);
 	auto& outIndices32 = outMesh.GetIndices();
 	outIndices32.reserve(indices.size());
-	for(uint16_t index: indices)
+	for(uint32_t index: indices)
 		outIndices32.push_back(index);
 	return outMesh;
 }
@@ -185,15 +185,15 @@ const char* GetMaterial(const ColladaFile& file, const ColladaFile::Mesh& mesh)
 
 Mesh ToMesh(const ColladaFile& file, const ColladaFile::Mesh& mesh)
 {
-	std::vector<uint16_t> positionIndices;
-	std::vector<uint16_t> normalIndices;
-	std::vector<uint16_t> texCoordIndices;
+	std::vector<uint32_t> positionIndices;
+	std::vector<uint32_t> normalIndices;
+	std::vector<uint32_t> texCoordIndices;
 	std::vector<Vector3> positions;
 	std::vector<Vector3> normals;
 	std::vector<Vector2> texCoords;
 	ReadMeshData(mesh, positionIndices, normalIndices, texCoordIndices, positions, normals, texCoords);
 
-	std::vector<uint16_t> outIndices;
+	std::vector<uint32_t> outIndices;
 	std::vector<Vector3> outPositions;
 	std::vector<Vector3> outNormals;
 	std::vector<Vector2> outUvs;
@@ -220,9 +220,9 @@ Mesh ToMesh(const ColladaFile& file, const ColladaFile::Mesh& mesh)
 Mesh ToMesh(const ColladaFile& file, const ColladaFile::Skin& skin)
 {
 	auto mesh = file.GetGeometry(skin.GetSource() + 1).GetMesh();
-	std::vector<uint16_t> positionIndices;
-	std::vector<uint16_t> normalIndices;
-	std::vector<uint16_t> texCoordIndices;
+	std::vector<uint32_t> positionIndices;
+	std::vector<uint32_t> normalIndices;
+	std::vector<uint32_t> texCoordIndices;
 	std::vector<Vector3> positions;
 	std::vector<Vector3> normals;
 	std::vector<Vector2> texCoords;
@@ -251,7 +251,7 @@ Mesh ToMesh(const ColladaFile& file, const ColladaFile::Skin& skin)
 		vertices[i].joints = vertexJoints[i];
 	}
 
-	std::vector<uint16_t> outIndices;
+	std::vector<uint32_t> outIndices;
 	std::vector<Vertex> outVertices;
 	std::vector<Vector3> outNormals;
 	std::vector<Vector2> outUvs;

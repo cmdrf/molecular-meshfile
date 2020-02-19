@@ -177,7 +177,7 @@ using TriangleRange = Range<std::vector<ObjFile::Triangle>::const_iterator>;
 void ObjVertexGroupBuffers(
 		const ObjFile& objFile,
 		const ObjFile::VertexGroup& vg,
-		std::vector<uint16_t>& unifiedIndices,
+		std::vector<uint32_t>& unifiedIndices,
 		std::vector<Vector3>& unifiedPositions,
 		std::vector<Vector3>& unifiedNormals,
 		std::vector<Vector2>& unifiedUvs)
@@ -191,10 +191,10 @@ void ObjVertexGroupBuffers(
 	QuadRange quads(quadsBegin + vg.firstQuad, quadsBegin + endQuad);
 	TriangleRange triangles(trianglesBegin + vg.firstTriangle, trianglesBegin + endTriangle);
 
-	std::vector<uint16_t> positionIndices, normalIndices, uvIndices;
+	std::vector<uint32_t> positionIndices, normalIndices, uvIndices;
 
 	{
-		std::vector<uint16_t> quadPositionIndices;
+		std::vector<uint32_t> quadPositionIndices;
 		for(auto& quad: quads)
 			quadPositionIndices.insert(quadPositionIndices.end(), quad.vertexIndices.begin(), quad.vertexIndices.end());
 		positionIndices.resize(quadPositionIndices.size() / 2 * 3);
@@ -203,7 +203,7 @@ void ObjVertexGroupBuffers(
 
 	if(vg.hasNormals)
 	{
-		std::vector<uint16_t> quadNormalIndices;
+		std::vector<uint32_t> quadNormalIndices;
 		for(auto& quad: quads)
 			quadNormalIndices.insert(quadNormalIndices.end(), quad.normalIndices.begin(), quad.normalIndices.end());
 		normalIndices.resize(quadNormalIndices.size() / 2 * 3);
@@ -212,7 +212,7 @@ void ObjVertexGroupBuffers(
 
 	if(vg.hasTexCoords)
 	{
-		std::vector<uint16_t> quadUvIndices;
+		std::vector<uint32_t> quadUvIndices;
 		for(auto& quad: quads)
 			quadUvIndices.insert(quadUvIndices.end(), quad.texCoordIndices.begin(), quad.texCoordIndices.end());
 		uvIndices.resize(quadUvIndices.size() / 2 * 3);
@@ -228,7 +228,7 @@ void ObjVertexGroupBuffers(
 			uvIndices.insert(uvIndices.end(), tri.texCoordIndices.begin(), tri.texCoordIndices.end());
 	}
 
-	const uint16_t* normalIndexData = nullptr;
+	const uint32_t* normalIndexData = nullptr;
 	const Vector3* normalVertexData = nullptr;
 	if(vg.hasNormals)
 	{
@@ -237,7 +237,7 @@ void ObjVertexGroupBuffers(
 		normalVertexData = objFile.GetNormals().data();
 	}
 
-	const uint16_t* uvIndexData = nullptr;
+	const uint32_t* uvIndexData = nullptr;
 	const Vector2* uvVertexData = nullptr;
 	if(vg.hasTexCoords)
 	{
@@ -275,7 +275,7 @@ void Compile(ObjFile& objFile, WriteStorage& storage)
 			throw std::runtime_error("OBJ files with varying normal/UV layout not supported");
 	}
 
-	std::vector<uint16_t> indices;
+	std::vector<uint32_t> indices;
 	std::vector<Vector3> positions;
 	std::vector<Vector3> normals;
 	std::vector<Vector2> uvs;
@@ -289,11 +289,11 @@ void Compile(ObjFile& objFile, WriteStorage& storage)
 
 		IndexBufferInfo indexSpec;
 		indexSpec.buffer = 0;
-		indexSpec.offset = firstIndex * sizeof(uint16_t);
+		indexSpec.offset = firstIndex * sizeof(uint32_t);
 		indexSpec.count = indices.size() - firstIndex;
 		indexSpec.mode = IndexBufferInfo::Mode::kTriangles;
 		StringUtils::Copy(vg.material, indexSpec.material);
-		indexSpec.type = IndexBufferInfo::Type::kUInt16;
+		indexSpec.type = IndexBufferInfo::Type::kUInt32;
 		indexSpec.vertexDataSet = 0;
 		indexSpecs.push_back(indexSpec);
 	}
@@ -372,7 +372,7 @@ void Compile(ObjFile& objFile, WriteStorage& storage)
 	auto bounds = objFile.GetBoundingBox();
 
 	std::vector<std::pair<const void*, size_t>> indexBuffers;
-	indexBuffers.emplace_back(indices.data(), indices.size() * sizeof(uint16_t));
+	indexBuffers.emplace_back(indices.data(), indices.size() * sizeof(uint32_t));
 	Compile(vertexBuffers, indexBuffers,
 			std::vector<std::vector<VertexAttributeInfo>>(1, vertexSpecs),
 			std::vector<unsigned int>(1, positions.size()),
@@ -391,7 +391,7 @@ MeshSet ObjFileToMeshSet(ObjFile& objFile)
 		if(vg.numQuads == 0 && vg.numTriangles == 0)
 			continue;
 
-		std::vector<uint16_t> indices;
+		std::vector<uint32_t> indices;
 		std::vector<Vector3> positions;
 		std::vector<Vector3> normals;
 		std::vector<Vector2> uvs;
@@ -413,7 +413,7 @@ MeshSet ObjFileToMeshSet(ObjFile& objFile)
 
 		auto& outIndices = mesh.GetIndices();
 		outIndices.reserve(indices.size());
-		for(uint16_t index: indices)
+		for(uint32_t index: indices)
 			outIndices.push_back(index);
 	}
 
