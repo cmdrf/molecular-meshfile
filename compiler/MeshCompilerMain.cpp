@@ -45,15 +45,11 @@ int main(int argc, char** argv)
 	CommandLineParser::PositionalArg<std::string> outFileName(cmd, "output file", "Output compiled mesh file");
 	CommandLineParser::Flag prt(cmd, "prt", "Enable radiance transfer precomputation");
 	CommandLineParser::Option<float> scale(cmd, "scale", "Mesh scale factor", 1.0);
+	CommandLineParser::HelpFlag help(cmd);
 
 	try
 	{
 		cmd.Parse(argc, argv);
-		if(!inFileName || !outFileName)
-		{
-			std::cerr << "Both input and output file names are required\n";
-			return EXIT_FAILURE;
-		}
 
 		FileWriteStorage outFile(*outFileName);
 		MeshSet meshSet;
@@ -70,10 +66,7 @@ int main(int argc, char** argv)
 			meshSet = ColladaToMesh::ToMesh(file);
 		}
 		else
-		{
-			std::cerr << *inFileName << ": Unknown format" << std::endl;
-			return EXIT_FAILURE;
-		}
+			throw std::runtime_error("Unknown input format");
 
 		if(scale)
 		{
@@ -103,7 +96,7 @@ int main(int argc, char** argv)
 	}
 	catch(std::exception& e)
 	{
-		std::cerr << inFileName << ": " << e.what() << std::endl;
+		std::cerr << "molecularmeshcompiler: " << e.what() << std::endl;
 		return EXIT_FAILURE;
 	}
 	return EXIT_SUCCESS;
