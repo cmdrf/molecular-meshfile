@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018-2019 Fabian Herb
+Copyright (c) 2018-2020 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -45,6 +45,7 @@ int main(int argc, char** argv)
 	CommandLineParser::PositionalArg<std::string> outFileName(cmd, "output file", "Output compiled mesh file");
 	CommandLineParser::Flag prt(cmd, "prt", "Enable radiance transfer precomputation");
 	CommandLineParser::Option<float> scale(cmd, "scale", "Mesh scale factor", 1.0);
+	CommandLineParser::Option<std::string> material(cmd, "material", "Override material string (of all submeshes)");
 	CommandLineParser::HelpFlag help(cmd);
 
 	try
@@ -73,6 +74,8 @@ int main(int argc, char** argv)
 			for(auto& mesh: meshSet)
 				MeshUtils::Scale(mesh, *scale);
 		}
+
+		// Precomputed radiance transfer:
 		if(prt)
 		{
 			auto samples = SphericalHarmonics::SetupSphericalSamples<3>();
@@ -80,18 +83,26 @@ int main(int argc, char** argv)
 				PrecomputedRadianceTransfer::CalculateDiffuseShadowed(mesh, samples);
 		}
 
+		// Override material:
+		if(material)
+		{
+			for(auto& mesh: meshSet)
+				mesh.SetMaterial(*material);
+		}
+
 		// Precision reduction:
 		for(auto& mesh: meshSet)
 			MeshUtils::ReducePrecision(mesh);
 
+		// Triangle order optimization:
+		for(auto& mesh: meshSet)
 		{
-			for(auto& mesh: meshSet)
-			{
-				uint32_t* indices = mesh.GetIndices().data();
-				assert(indices);
-				TriListOpt::OptimizeTriangleOrdering(mesh.GetNumVertices(), mesh.GetIndices().size(), indices, indices);
-			}
+			uint32_t* indices = mesh.GetIndices().data();
+			assert(indices);
+			TriListOpt::OptimizeTriangleOrdering(mesh.GetNumVertices(), mesh.GetIndices().size(), indices, indices);
 		}
+
+		// Finally write to file:
 		MeshCompiler::Compile(meshSet, outFile);
 	}
 	catch(std::exception& e)
