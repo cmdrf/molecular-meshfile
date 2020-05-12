@@ -44,6 +44,7 @@ int main(int argc, char** argv)
 	CommandLineParser::PositionalArg<std::string> inFileName(cmd, "input file", "Input mesh to compile");
 	CommandLineParser::PositionalArg<std::string> outFileName(cmd, "output file", "Output compiled mesh file");
 	CommandLineParser::Flag prt(cmd, "prt", "Enable radiance transfer precomputation");
+	CommandLineParser::Flag noHalfFloatNormals(cmd, "no-half-float-normals", "Store normals as 32 bit floats instead of 16 bit");
 	CommandLineParser::Option<float> scale(cmd, "scale", "Mesh scale factor", 1.0);
 	CommandLineParser::Option<std::string> material(cmd, "material", "Override material string (of all submeshes)");
 	CommandLineParser::HelpFlag help(cmd);
@@ -90,9 +91,19 @@ int main(int argc, char** argv)
 				mesh.SetMaterial(*material);
 		}
 
+		std::unordered_set<Hash> toHalf = {
+			VertexAttributeInfo::kVertexPrt0,
+			VertexAttributeInfo::kVertexPrt1,
+			VertexAttributeInfo::kVertexPrt2,
+			VertexAttributeInfo::kSkinWeights
+		};
+
+		if(!noHalfFloatNormals)
+			toHalf.insert(VertexAttributeInfo::kNormal);
+
 		// Precision reduction:
 		for(auto& mesh: meshSet)
-			MeshUtils::ReducePrecision(mesh);
+			MeshUtils::ReducePrecision(mesh, toHalf);
 
 		// Triangle order optimization:
 		for(auto& mesh: meshSet)
