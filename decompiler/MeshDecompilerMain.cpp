@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2021 Fabian Herb
+Copyright (c) 2021-2023 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -77,7 +77,13 @@ int main(int argc, char** argv)
 			if(info.type == VertexAttributeInfo::kHalf)
 			{
 				toFloatData.resize(buffer.size / 2); // TODO: Interleaved buffer, strides etc.
-				// TODO proper conversion
+#if defined(__ARM_FP16_FORMAT_IEEE) || defined(__STDCPP_FLOAT16_T__)
+				const _Float16* f = static_cast<const _Float16*>(inMesh->GetBufferData(info.buffer));
+				for(size_t i = 0; i < buffer.size / 2; ++i)
+					toFloatData[i] = f[i];
+#else
+				// TODO
+#endif
 			}
 			else
 			{
