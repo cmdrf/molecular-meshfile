@@ -45,6 +45,7 @@ int main(int argc, char** argv)
 	CommandLineParser::PositionalArg<std::string> outFileName(cmd, "output file", "Output compiled mesh file");
 	CommandLineParser::Flag prt(cmd, "prt", "Enable radiance transfer precomputation");
 	CommandLineParser::Flag noHalfFloatNormals(cmd, "no-half-float-normals", "Store normals as 32 bit floats instead of 16 bit");
+	CommandLineParser::Flag noTextureCoords(cmd, "no-texture-coords", "Don't store texture coordinates");
 	CommandLineParser::Option<float> scale(cmd, "scale", "Mesh scale factor", 1.0);
 	CommandLineParser::Option<std::string> material(cmd, "material", "Override material string (of all submeshes)");
 	CommandLineParser::HelpFlag help(cmd);
@@ -82,6 +83,12 @@ int main(int argc, char** argv)
 			auto samples = SphericalHarmonics::SetupSphericalSamples<3>();
 			for(auto& mesh: meshSet)
 				PrecomputedRadianceTransfer::CalculateDiffuseShadowed(mesh, samples);
+		}
+
+		if(noTextureCoords)
+		{
+			for(auto& mesh: meshSet)
+				mesh.RemoveAttribute(VertexAttributeInfo::kTextureCoords);
 		}
 
 		// Override material:

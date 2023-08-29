@@ -8,8 +8,6 @@ add_executable(molecularmeshcompiler
 	ColladaToMesh.h
 	MeshCompiler.cpp
 	MeshCompiler.h
-	ObjFile.cpp
-	ObjFile.h
 	PrecomputedRadianceTransfer.cpp
 	PrecomputedRadianceTransfer.h
 )

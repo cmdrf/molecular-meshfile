@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018-2019 Fabian Herb
+Copyright (c) 2018-2023 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,11 @@ SOFTWARE.
 #ifndef MOLECULAR_MESHCOMPILER_H
 #define MOLECULAR_MESHCOMPILER_H
 
-#include <molecular/util/StreamStorage.h>
 #include <molecular/meshfile/MeshFile.h>
-#include "ObjFile.h"
-#include <molecular/util/Mesh.h>
 #include <molecular/util/BufferInfo.h>
+#include <molecular/util/Mesh.h>
+#include <molecular/util/ObjFile.h>
+#include <molecular/util/StreamStorage.h>
 
 namespace molecular
 {
@@ -43,17 +43,17 @@ namespace MeshCompiler
 void Compile(
 		const std::vector<std::pair<const void*, size_t>>& vertexBuffers,
 		const std::vector<std::pair<const void*, size_t>>& indexBuffers,
-		const std::vector<std::vector<VertexAttributeInfo>>& vertexDataSets,
+		const std::vector<std::vector<util::VertexAttributeInfo>>& vertexDataSets,
 		const std::vector<unsigned int>& vertexDataSetVertexCounts,
-		const std::vector<IndexBufferInfo>& indexSpecs,
+		const std::vector<util::IndexBufferInfo>& indexSpecs,
 		const float boundsMin[3], const float boundsMax[3],
-		WriteStorage& storage
+		util::WriteStorage& storage
 		);
 
-util::MeshSet ObjFileToMeshSet(ObjFile& objFile);
+util::MeshSet ObjFileToMeshSet(util::ObjFile& objFile);
 
 /** @todo Optimize vertex buffer layout. */
-void Compile(const util::MeshSet& meshes, WriteStorage& storage);
+void Compile(const util::MeshSet& meshes, util::WriteStorage& storage);
 
 }
 

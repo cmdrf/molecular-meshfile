@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2018-2019 Fabian Herb
+Copyright (c) 2018-2023 Fabian Herb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,9 @@ SOFTWARE.
 */
 
 #include "MeshCompiler.h"
-#include <molecular/util/MeshUtils.h>
 
+#include <molecular/util/MeshUtils.h>
+#include <molecular/util/ObjFileUtils.h>
 #include <molecular/util/Range.h>
 #include <molecular/util/StringUtils.h>
 
@@ -169,97 +170,6 @@ void Compile(const std::vector<std::pair<const void*, size_t> >& vertexBuffers,
 
 }
 
-using QuadRange = Range<std::vector<ObjFile::Quad>::const_iterator>;
-using TriangleRange = Range<std::vector<ObjFile::Triangle>::const_iterator>;
-
-/// Convert OBJ mesh data to data for three vertex buffers and one index buffer
-/** Index and vertex data is appended to the output vectors. */
-void ObjVertexGroupBuffers(
-		const ObjFile& objFile,
-		const ObjFile::VertexGroup& vg,
-		std::vector<uint32_t>& unifiedIndices,
-		std::vector<Vector3>& unifiedPositions,
-		std::vector<Vector3>& unifiedNormals,
-		std::vector<Vector2>& unifiedUvs)
-{
-	unsigned int endQuad = vg.firstQuad + vg.numQuads;
-	unsigned int endTriangle = vg.firstTriangle + vg.numTriangles;
-	assert(endQuad <= objFile.GetQuads().size());
-	assert(endTriangle <= objFile.GetTriangles().size());
-	auto quadsBegin = objFile.GetQuads().begin();
-	auto trianglesBegin = objFile.GetTriangles().begin();
-	QuadRange quads(quadsBegin + vg.firstQuad, quadsBegin + endQuad);
-	TriangleRange triangles(trianglesBegin + vg.firstTriangle, trianglesBegin + endTriangle);
-
-	std::vector<uint32_t> positionIndices, normalIndices, uvIndices;
-
-	{
-		std::vector<uint32_t> quadPositionIndices;
-		for(auto& quad: quads)
-			quadPositionIndices.insert(quadPositionIndices.end(), quad.vertexIndices.begin(), quad.vertexIndices.end());
-		positionIndices.resize(quadPositionIndices.size() / 2 * 3);
-		MeshUtils::QuadToTriangleIndices(vg.numQuads, quadPositionIndices.data(), positionIndices.data());
-	}
-
-	if(vg.hasNormals)
-	{
-		std::vector<uint32_t> quadNormalIndices;
-		for(auto& quad: quads)
-			quadNormalIndices.insert(quadNormalIndices.end(), quad.normalIndices.begin(), quad.normalIndices.end());
-		normalIndices.resize(quadNormalIndices.size() / 2 * 3);
-		MeshUtils::QuadToTriangleIndices(vg.numQuads, quadNormalIndices.data(), normalIndices.data());
-	}
-
-	if(vg.hasTexCoords)
-	{
-		std::vector<uint32_t> quadUvIndices;
-		for(auto& quad: quads)
-			quadUvIndices.insert(quadUvIndices.end(), quad.texCoordIndices.begin(), quad.texCoordIndices.end());
-		uvIndices.resize(quadUvIndices.size() / 2 * 3);
-		MeshUtils::QuadToTriangleIndices(vg.numQuads, quadUvIndices.data(), uvIndices.data());
-	}
-
-	for(auto& tri: triangles)
-	{
-		positionIndices.insert(positionIndices.end(), tri.vertexIndices.begin(), tri.vertexIndices.end());
-		if(vg.hasNormals)
-			normalIndices.insert(normalIndices.end(), tri.normalIndices.begin(), tri.normalIndices.end());
-		if(vg.hasTexCoords)
-			uvIndices.insert(uvIndices.end(), tri.texCoordIndices.begin(), tri.texCoordIndices.end());
-	}
-
-	const uint32_t* normalIndexData = nullptr;
-	const Vector3* normalVertexData = nullptr;
-	if(vg.hasNormals)
-	{
-		assert(positionIndices.size() == normalIndices.size());
-		normalIndexData = normalIndices.data();
-		normalVertexData = objFile.GetNormals().data();
-	}
-
-	const uint32_t* uvIndexData = nullptr;
-	const Vector2* uvVertexData = nullptr;
-	if(vg.hasTexCoords)
-	{
-		assert(positionIndices.size() == uvIndices.size());
-		uvIndexData = uvIndices.data();
-		uvVertexData = objFile.GetTexCoords().data();
-	}
-
-	MeshUtils::SeparateToUnifiedIndices(
-				positionIndices.size(),
-				positionIndices.data(),
-				normalIndexData,
-				uvIndexData,
-				objFile.GetVertices().size(), objFile.GetVertices().data(),
-				objFile.GetNormals().size(), normalVertexData,
-				objFile.GetTexCoords().size(), uvVertexData,
-				unifiedIndices,
-				unifiedPositions,
-				unifiedNormals,
-				unifiedUvs);
-}
-
 MeshSet ObjFileToMeshSet(ObjFile& objFile)
 {
 	auto& vertexGroups = objFile.GetVertexGroups();
@@ -275,7 +185,7 @@ MeshSet ObjFileToMeshSet(ObjFile& objFile)
 		std::vector<Vector3> normals;
 		std::vector<Vector2> uvs;
 
-		ObjVertexGroupBuffers(objFile, vg, indices, positions, normals, uvs);
+		ObjFileUtils::ObjVertexGroupBuffers(objFile, vg, indices, positions, normals, uvs);
 		size_t numVertices = positions.size();
 		assert(normals.empty() || normals.size() == numVertices);
 		assert(uvs.empty() || uvs.size() == numVertices);
