@@ -78,7 +78,7 @@ int main(int argc, char** argv)
 			{
 				toFloatData.resize(buffer.size / 2); // TODO: Interleaved buffer, strides etc.
 #if defined(__ARM_FP16_FORMAT_IEEE) || defined(__STDCPP_FLOAT16_T__)
-				const _Float16* f = static_cast<const _Float16*>(inMesh->GetBufferData(info.buffer));
+				const __fp16* f = static_cast<const __fp16*>(inMesh->GetBufferData(info.buffer));
 				for(size_t i = 0; i < buffer.size / 2; ++i)
 					toFloatData[i] = f[i];
 #else
